@@ -12,6 +12,8 @@ class Card {
 //create deck (class)
     //needs array of 52 cards
     //needs a shuffle method to shuffle deck
+    //needs deck rank and suits defined
+    //https://stackoverflow.com/questions/70726331/how-can-i-shuffle-an-array-of-objects-on-page-render-and-map-over-the-shuffled-a
 
 class Deck {
     constructor() {
@@ -21,15 +23,14 @@ class Deck {
     newDeck() {
         const suits = ['H', 'S', 'D', 'C'];
         const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-        for (let i = 0; i < suits.length; i++) {
-            console.log(suits[i]);
+        for (let i = 0; i < suits.length; i++) { 
             for (let j = 0; j < ranks.length; j++) {
                 const card = new Card(ranks[j], suits[i]);
                 this.cards.push(card);
             }
         }
     }
-    shuffle() {
+    shuffle() { //shuffle method from the link above and it works!!
         for (let i = this.cards.length -1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
@@ -45,7 +46,7 @@ class Deck {
 class Player {
         constructor(name) {
             this.name = name;
-            this.hand - []
+            this.hand = []
             this.score = 0;
         }
         playCard(){
@@ -55,11 +56,12 @@ class Player {
 
 //create Game class
     //creates 2 players
-    //creates deck
+    //shuffles deck
     //deals 26 cards to each player
     //iterates through a loop where each player plays a card
-    //compare ranks of cards and award point for higher
-    //if cards are = then both players get 0
+    //compare ranks of cards and awards point for higher rank
+    //if cards are = then both players get 0/tie
+    //displays each player's score and declares a winner
 
 class Game {
     constructor(){
@@ -89,12 +91,14 @@ class Game {
             this.playRound();
         }
         if (this.player1.score > this.player2.score) {
-            console.log ('Player 1 wins');
+            console.log ('Player 1 wins!');
         } else if (this.player2.score > this.player1.score) {
             console.log('Player 2 wins!');
         } else {
             console.log('Tie!');
         }
+        console.log(`Player 1: ${this.player1.score}`);
+        console.log(`Player 2: ${this.player2.score}`)
     }
 }
 
