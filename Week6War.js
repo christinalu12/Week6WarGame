@@ -1,6 +1,6 @@
 //create card (class)
-    //needs rank '2-14'
-    //needs suits 'S, H, D, C'
+    //needs rank
+    //needs suits 
 
 class Card {
     constructor(rank, suit) {
@@ -11,6 +11,8 @@ class Card {
 
 //create deck (class)
     //needs array of 52 cards
+    //need suits array  defined
+    //needs rank array defined
     //needs a shuffle method to shuffle deck
     //needs deck rank and suits defined
     //https://stackoverflow.com/questions/70726331/how-can-i-shuffle-an-array-of-objects-on-page-render-and-map-over-the-shuffled-a
@@ -23,8 +25,8 @@ class Deck {
     newDeck() {
         const suits = ['H', 'S', 'D', 'C'];
         const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-        for (let i = 0; i < suits.length; i++) { 
-            for (let j = 0; j < ranks.length; j++) {
+        for (let i = 0; i < suits.length; i++) { //i variable for suits
+            for (let j = 0; j < ranks.length; j++) { //j variable is for ranks
                 const card = new Card(ranks[j], suits[i]);
                 this.cards.push(card);
             }
@@ -91,16 +93,21 @@ class Game {
             this.playRound();
         }
         if (this.player1.score > this.player2.score) {
-            console.log ('Player 1 wins!');
+            //console.log ('Player 1 wins!'); testing
+            alert('Player 1 wins!');
         } else if (this.player2.score > this.player1.score) {
-            console.log('Player 2 wins!');
+            //console.log('Player 2 wins!');
+            alert('Player 2 wins');
         } else {
-            console.log('Tie!');
+            //console.log('Tie!');
+            alert('Tie Game!')
         }
-        console.log(`Player 1: ${this.player1.score}`);
-        console.log(`Player 2: ${this.player2.score}`)
+        //console.log(`Player 1: ${this.player1.score}`);
+        //console.log(`Player 2: ${this.player2.score}`)
+        alert(`Player 1: ${this.player1.score}\nPlayer 2: ${this.player2.score}`)
     }
 }
+//changed console logs to alerts to show winner and scores
 
 const game = new Game();
 game.playGame();
